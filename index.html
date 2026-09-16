@@ -131,9 +131,9 @@
 
                     <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs text-slate-500 space-y-1">
                         <div class="font-semibold text-slate-700 flex items-center gap-1.5">
-                            <i class="fa-solid fa-circle-info text-brand-orange"></i> Autentikasi Mandiri
+                            <i class="fa-solid fa-circle-info text-brand-orange"></i> Mode Operasional Live
                         </div>
-                        <p>Sistem ini dirancang khusus untuk manajemen transaksi PT Ruang Kreasi Utama.</p>
+                        <p>Sistem ini telah dikonfigurasi bersih untuk pencatatan transaksi PT Ruang Kreasi Utama.</p>
                     </div>
                 </div>
             </div>
@@ -334,7 +334,7 @@
                                     <i class="fa-solid fa-calendar-days text-brand-orange"></i>
                                     <span>Bulan Ini (THIS MONTH)</span>
                                 </h4>
-                                <span class="text-xs bg-orange-50 text-brand-orange px-2.5 py-0.5 rounded-full font-semibold">September 2026</span>
+                                <span id="dash-month-badge" class="text-xs bg-orange-50 text-brand-orange px-2.5 py-0.5 rounded-full font-semibold">Bulan Ini</span>
                             </div>
                             <div class="grid grid-cols-3 gap-3 text-center">
                                 <div class="bg-slate-50 p-3 rounded-lg">
@@ -361,9 +361,9 @@
                             <div class="flex justify-between items-center border-b pb-3 border-slate-100">
                                 <h4 class="font-bold text-slate-800 text-sm flex items-center gap-2">
                                     <i class="fa-solid fa-chart-line text-blue-600"></i>
-                                    <span>Tahun Ini (YEAR TO DATE 2026)</span>
+                                    <span>Tahun Ini (YEAR TO DATE)</span>
                                 </h4>
-                                <span class="text-xs bg-blue-50 text-blue-600 px-2.5 py-0.5 rounded-full font-semibold">YTD 2026</span>
+                                <span id="dash-ytd-badge" class="text-xs bg-blue-50 text-blue-600 px-2.5 py-0.5 rounded-full font-semibold">YTD</span>
                             </div>
                             <div class="grid grid-cols-3 gap-3 text-center">
                                 <div class="bg-slate-50 p-3 rounded-lg">
@@ -413,7 +413,7 @@
                             </div>
                             <div class="text-right">
                                 <span class="text-xs text-slate-400 font-semibold block">Pratinjau Nomor Invoice Server:</span>
-                                <span id="pos-next-invoice-num" class="text-sm font-bold text-brand-orange bg-orange-50 px-3 py-1 rounded-lg border border-orange-200 inline-block mt-1">RKU-INV-2026-000006</span>
+                                <span id="pos-next-invoice-num" class="text-sm font-bold text-brand-orange bg-orange-50 px-3 py-1 rounded-lg border border-orange-200 inline-block mt-1">RKU-INV-2026-000001</span>
                             </div>
                         </div>
 
@@ -1156,8 +1156,8 @@ function getNextInvoiceSequence() {
                             <div class="mt-2 space-y-1 text-xs">
                                 <p class="text-slate-500 whitespace-nowrap">Nomor Invoice: <strong id="inv-doc-number" class="text-brand-orange font-bold text-sm inline-block whitespace-nowrap">RKU-INV-2026-000001</strong></p>
                                 <p class="text-slate-500 whitespace-nowrap">Transaction ID: <strong id="inv-doc-txnid" class="text-slate-700 font-mono inline-block whitespace-nowrap">TXN-20260916-000001</strong></p>
-                                <p class="text-slate-500 whitespace-nowrap">Tanggal Transaksi: <span id="inv-doc-date" class="font-semibold text-slate-700">16 September 2026</span></p>
-                                <p class="text-slate-500 whitespace-nowrap">Jatuh Tempo: <span id="inv-doc-duedate" class="font-semibold text-slate-700">30 September 2026</span></p>
+                                <p class="text-slate-500 whitespace-nowrap">Tanggal Transaksi: <span id="inv-doc-date" class="font-semibold text-slate-700">-</span></p>
+                                <p class="text-slate-500 whitespace-nowrap">Jatuh Tempo: <span id="inv-doc-duedate" class="font-semibold text-slate-700">-</span></p>
                             </div>
                         </div>
                     </div>
@@ -1166,16 +1166,16 @@ function getNextInvoiceSequence() {
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 my-8 bg-slate-50 p-5 rounded-xl border border-slate-200">
                         <div>
                             <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Diterbitkan Untuk (Customer):</span>
-                            <h3 id="inv-cus-name" class="font-bold text-slate-900 text-base">Budi Santoso</h3>
-                            <p id="inv-cus-company" class="text-xs font-semibold text-brand-orange">PT ABC Indonesia</p>
-                            <p id="inv-cus-type" class="text-[11px] text-slate-500 mt-0.5">Kategori: Corporate</p>
-                            <p id="inv-cus-address" class="text-xs text-slate-600 mt-2">Jl. Sudirman No. 45, Jakarta Selatan</p>
+                            <h3 id="inv-cus-name" class="font-bold text-slate-900 text-base">-</h3>
+                            <p id="inv-cus-company" class="text-xs font-semibold text-brand-orange">-</p>
+                            <p id="inv-cus-type" class="text-[11px] text-slate-500 mt-0.5">Kategori: -</p>
+                            <p id="inv-cus-address" class="text-xs text-slate-600 mt-2">-</p>
                         </div>
                         <div class="text-left sm:text-right space-y-1 text-xs text-slate-600">
                             <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Informasi Kontak & NPWP:</span>
-                            <p>No. Telepon: <span id="inv-cus-phone" class="font-medium text-slate-800">081299887766</span></p>
-                            <p>Email: <span id="inv-cus-email" class="font-medium text-slate-800">budi@abc.co.id</span></p>
-                            <p>NPWP Pelanggan: <span id="inv-cus-npwp" class="font-mono font-semibold text-slate-800">01.999.888.7-011.000</span></p>
+                            <p>No. Telepon: <span id="inv-cus-phone" class="font-medium text-slate-800">-</span></p>
+                            <p>Email: <span id="inv-cus-email" class="font-medium text-slate-800">-</span></p>
+                            <p>NPWP Pelanggan: <span id="inv-cus-npwp" class="font-mono font-semibold text-slate-800">-</span></p>
                         </div>
                     </div>
 
@@ -1204,8 +1204,8 @@ function getNextInvoiceSequence() {
                                 <div>
                                     <span class="text-xs font-bold text-slate-700 uppercase block mb-1">Metode & Status Pembayaran</span>
                                     <div class="flex items-center gap-2 mt-1">
-                                        <span id="inv-badge-status" class="px-3 py-1 rounded-full text-xs font-bold uppercase bg-emerald-100 text-emerald-700">
-                                            PAID
+                                        <span id="inv-badge-status" class="px-3 py-1 rounded-full text-xs font-bold uppercase bg-slate-100 text-slate-700">
+                                            UNPAID
                                         </span>
                                         <span id="inv-badge-method" class="text-xs font-semibold text-slate-600 bg-white border border-slate-300 px-2.5 py-1 rounded-full">
                                             Bank Transfer
@@ -1411,8 +1411,10 @@ function getNextInvoiceSequence() {
     </div>
 
     <script>
-        // GLOBAL STATE ENGINE
+        // GLOBAL STATE ENGINE (LIVE OPERATIONAL INITIALIZATION)
         let currentUser = { name: "Admin RKU", role: "ADMIN" };
+
+        const currentYear = new Date().getFullYear();
 
         let settings = {
             company_name: "PT RUANG KREASI UTAMA",
@@ -1434,111 +1436,18 @@ function getNextInvoiceSequence() {
             web_app_url: ""
         };
 
-        let sequence = { invoiceYear: 2026, invoiceCount: 5, transactionCount: 5, customerCount: 5, paymentCount: 5 };
+        // CLEAN OPERATIONAL INITIAL ARRAYS
+        let sequence = { invoiceYear: currentYear, invoiceCount: 0, transactionCount: 0, customerCount: 1, paymentCount: 0 };
 
         let customers = [
-            { customer_id: "CUS-000001", customer_name: "Budi Santoso", company_name: "PT ABC Indonesia", customer_type: "Corporate", phone: "081299887766", email: "budi@abc.co.id", address: "Jl. Sudirman No. 45, Jakarta Selatan", npwp: "01.999.888.7-011.000", notes: "Klien VIP", created_at: "2026-09-01" },
-            { customer_id: "CUS-000002", customer_name: "Siti Aminah", company_name: "Sekolah XYZ", customer_type: "School", phone: "081377665544", email: "info@sekolahxyz.sch.id", address: "Jl. Pemuda No. 12, Jakarta Timur", npwp: "02.888.777.6-022.000", notes: "", created_at: "2026-09-05" },
-            { customer_id: "CUS-000003", customer_name: "Dr. Hendra", company_name: "Universitas ABC", customer_type: "University", phone: "081511223344", email: "hendra@univabc.ac.id", address: "Jl. Ganesha No. 10, Bandung", npwp: "03.777.666.5-033.000", notes: "Kerjasama Workshop", created_at: "2026-09-10" },
-            { customer_id: "CUS-000004", customer_name: "Rina Wijaya", company_name: "Personal", customer_type: "Individual", phone: "081822334455", email: "rina@gmail.com", address: "Sunter, Jakarta Utara", npwp: "", notes: "", created_at: "2026-09-12" },
-            { customer_id: "CUS-000005", customer_name: "Corporate Solutions Ltd", company_name: "Corporate Solutions Ltd", customer_type: "Corporate", phone: "021-554433", email: "contact@corpsolutions.com", address: "SCBD Tower 2, Jakarta", npwp: "04.555.444.3-044.000", notes: "", created_at: "2026-09-15" }
+            { customer_id: "CUS-000001", customer_name: "Pelanggan Umum", company_name: "Cash", customer_type: "Individual", phone: "-", email: "-", address: "-", npwp: "", notes: "Default", created_at: new Date().toISOString().split('T')[0] }
         ];
 
-        let products = [
-            { product_id: "PROD-001", name: "Wooden Crafting Workshop", category: "Workshop", description: "Sesi workshop pembuatan kerajinan kayu 3 jam", selling_price: 200000, cost_price: 80000, taxable: true, active: true },
-            { product_id: "PROD-002", name: "Material Kit Premium", category: "Material", description: "Bahan kayu jati & perlengkapan cat", selling_price: 50000, cost_price: 25000, taxable: true, active: true },
-            { product_id: "PROD-003", name: "Additional Service Fee", category: "Service", description: "Jasa pemotongan kustom & pengiriman", selling_price: 500000, cost_price: 150000, taxable: true, active: true },
-            { product_id: "PROD-004", name: "Corporate Event Consulting", category: "Consulting", description: "Konsultasi perencanaan event tahunan", selling_price: 1500000, cost_price: 300000, taxable: true, active: true }
-        ];
-
-        let invoices = [
-            {
-                invoice_number: "RKU-INV-2026-000001",
-                transaction_id: "TXN-20260916-000001",
-                invoice_date: "2026-09-16",
-                due_date: "2026-09-30",
-                customer_id: "CUS-000001",
-                items: [
-                    { description: "Wooden Crafting Workshop", quantity: 10, unit_price: 200000, discount: 0, subtotal: 2000000 },
-                    { description: "Material Kit Premium", quantity: 10, unit_price: 50000, discount: 0, subtotal: 500000 },
-                    { description: "Additional Service Fee", quantity: 1, unit_price: 500000, discount: 0, subtotal: 500000 }
-                ],
-                subtotal: 3000000,
-                discount: 0,
-                taxable_amount: 3000000,
-                tax_rate: 0,
-                tax_amount: 0,
-                grand_total: 3000000,
-                amount_paid: 3000000,
-                amount_due: 0,
-                payment_status: "PAID",
-                payment_method: "Bank Transfer",
-                notes: "Pelunasan via Transfer BCA",
-                created_by: "Admin RKU",
-                created_at: "2026-09-16 09:00",
-                cancellation_reason: ""
-            },
-            {
-                invoice_number: "RKU-INV-2026-000002",
-                transaction_id: "TXN-20260916-000002",
-                invoice_date: "2026-09-16",
-                due_date: "2026-09-30",
-                customer_id: "CUS-000002",
-                items: [
-                    { description: "Wooden Crafting Workshop", quantity: 20, unit_price: 200000, discount: 200000, subtotal: 3800000 }
-                ],
-                subtotal: 4000000,
-                discount: 200000,
-                taxable_amount: 3800000,
-                tax_rate: 0,
-                tax_amount: 0,
-                grand_total: 3800000,
-                amount_paid: 2000000,
-                amount_due: 1800000,
-                payment_status: "PARTIAL",
-                payment_method: "Bank Transfer",
-                notes: "DP 50% diterima",
-                created_by: "Admin RKU",
-                created_at: "2026-09-16 10:30",
-                cancellation_reason: ""
-            },
-            {
-                invoice_number: "RKU-INV-2026-000003",
-                transaction_id: "TXN-20260916-000003",
-                invoice_date: "2026-09-16",
-                due_date: "2026-09-25",
-                customer_id: "CUS-000003",
-                items: [
-                    { description: "Corporate Event Consulting", quantity: 1, unit_price: 1500000, discount: 0, subtotal: 1500000 }
-                ],
-                subtotal: 1500000,
-                discount: 0,
-                taxable_amount: 1500000,
-                tax_rate: 0,
-                tax_amount: 0,
-                grand_total: 1500000,
-                amount_paid: 0,
-                amount_due: 1500000,
-                payment_status: "UNPAID",
-                payment_method: "Bank Transfer",
-                notes: "Menunggu termin 1",
-                created_by: "Staff POS",
-                created_at: "2026-09-16 11:15",
-                cancellation_reason: ""
-            }
-        ];
-
-        let transactions = [...invoices];
-
-        let payments = [
-            { payment_id: "PAY-000001", payment_date: "2026-09-16", invoice_number: "RKU-INV-2026-000001", customer_name: "Budi Santoso", amount: 3000000, payment_method: "Bank Transfer", reference_number: "TRX-998811", notes: "Pelunasan penuh", created_by: "Admin RKU" },
-            { payment_id: "PAY-000002", payment_date: "2026-09-16", invoice_number: "RKU-INV-2026-000002", customer_name: "Siti Aminah", amount: 2000000, payment_method: "Bank Transfer", reference_number: "TRX-887722", notes: "DP 50%", created_by: "Admin RKU" }
-        ];
-
-        let auditLogs = [
-            { log_id: "LOG-001", timestamp: "2026-09-16 09:00", user: "Admin RKU", action: "CREATE", record_type: "INVOICE", record_id: "RKU-INV-2026-000001", description: "Menerbitkan invoice baru senilai Rp3.000.000" },
-            { log_id: "LOG-002", timestamp: "2026-09-16 09:05", user: "Admin RKU", action: "PAYMENT", record_type: "PAYMENT", record_id: "PAY-000001", description: "Mencatat pembayaran Rp3.000.000 (Full Paid)" }
-        ];
+        let products = [];
+        let invoices = [];
+        let transactions = [];
+        let payments = [];
+        let auditLogs = [];
 
         let currentActiveInvoice = null;
         let chartSalesInstance = null;
@@ -1562,6 +1471,7 @@ function getNextInvoiceSequence() {
 
         function initApp() {
             updateUserDisplay();
+            updateDateBadges();
             renderDashboard();
             resetPosForm();
             renderInvoicesTable();
@@ -1573,6 +1483,18 @@ function getNextInvoiceSequence() {
             renderSalesReport();
             renderAuditLog();
             loadSettingsForm();
+        }
+
+        function updateDateBadges() {
+            const now = new Date();
+            const monthStr = now.toLocaleDateString('id-ID', { month: 'long', year: 'numeric' });
+            const yearStr = now.getFullYear();
+            
+            const monthBadge = document.getElementById('dash-month-badge');
+            if (monthBadge) monthBadge.textContent = monthStr;
+
+            const ytdBadge = document.getElementById('dash-ytd-badge');
+            if (ytdBadge) ytdBadge.textContent = `YTD ${yearStr}`;
         }
 
         function updateUserDisplay() {
@@ -1665,7 +1587,10 @@ function getNextInvoiceSequence() {
             let monthSales = 0, monthPaid = 0, monthDue = 0, monthInvCount = 0;
             let ytdSales = 0, ytdPaid = 0, ytdDue = 0, ytdInvCount = 0;
 
-            const todayStr = new Date().toISOString().split('T')[0];
+            const now = new Date();
+            const todayStr = now.toISOString().split('T')[0];
+            const currentYearStr = String(now.getFullYear());
+            const currentMonthStr = `${currentYearStr}-${String(now.getMonth() + 1).padStart(2, '0')}`;
 
             invoices.forEach(inv => {
                 if (inv.payment_status === 'CANCELLED') return;
@@ -1679,14 +1604,14 @@ function getNextInvoiceSequence() {
                     outstandingToday += inv.amount_due;
                 }
 
-                if (inv.invoice_date.startsWith('2026-09')) {
+                if (inv.invoice_date.startsWith(currentMonthStr)) {
                     monthSales += inv.grand_total;
                     monthPaid += inv.amount_paid;
                     monthDue += inv.amount_due;
                     monthInvCount++;
                 }
 
-                if (inv.invoice_date.startsWith('2026')) {
+                if (inv.invoice_date.startsWith(currentYearStr)) {
                     ytdSales += inv.grand_total;
                     ytdPaid += inv.amount_paid;
                     ytdDue += inv.amount_due;
@@ -1731,13 +1656,26 @@ function getNextInvoiceSequence() {
             const ctxSales = document.getElementById('chart-sales-monthly').getContext('2d');
             if (chartSalesInstance) chartSalesInstance.destroy();
 
+            const monthlyData = new Array(12).fill(0);
+            const currentYearStr = String(new Date().getFullYear());
+
+            invoices.forEach(inv => {
+                if (inv.payment_status === 'CANCELLED') return;
+                if (inv.invoice_date.startsWith(currentYearStr)) {
+                    const mIndex = parseInt(inv.invoice_date.split('-')[1], 10) - 1;
+                    if (mIndex >= 0 && mIndex < 12) {
+                        monthlyData[mIndex] += inv.grand_total;
+                    }
+                }
+            });
+
             chartSalesInstance = new Chart(ctxSales, {
                 type: 'bar',
                 data: {
                     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                     datasets: [{
                         label: 'Penjualan (Rp)',
-                        data: [12000000, 15000000, 18000000, 14000000, 22000000, 19000000, 25000000, 21000000, 8630000, 0, 0, 0],
+                        data: monthlyData,
                         backgroundColor: '#F97316',
                         borderRadius: 6
                     }]
@@ -1778,7 +1716,8 @@ function getNextInvoiceSequence() {
         }
 
         function resetPosForm() {
-            document.getElementById('pos-date').value = new Date().toISOString().split('T')[0];
+            const todayStr = new Date().toISOString().split('T')[0];
+            document.getElementById('pos-date').value = todayStr;
             
             const cusSelect = document.getElementById('pos-customer-select');
             cusSelect.innerHTML = customers.map(c => `<option value="${c.customer_id}">${c.customer_name} (${c.company_name})</option>`).join('');
@@ -1790,7 +1729,8 @@ function getNextInvoiceSequence() {
 
             sequence.invoiceCount++;
             const seqStr = String(sequence.invoiceCount).padStart(6, '0');
-            document.getElementById('pos-next-invoice-num').textContent = `${settings.invoice_prefix}-2026-${seqStr}`;
+            const yearStr = new Date().getFullYear();
+            document.getElementById('pos-next-invoice-num').textContent = `${settings.invoice_prefix}-${yearStr}-${seqStr}`;
             sequence.invoiceCount--;
 
             calculatePosTotals();
@@ -1812,11 +1752,15 @@ function getNextInvoiceSequence() {
             tr.id = rowId;
             tr.className = "hover:bg-slate-50";
 
+            const productOptions = products.length > 0 
+                ? products.map(p => `<option value="${p.product_id}">${p.name} (Rp${p.selling_price.toLocaleString()})</option>`).join('')
+                : '';
+
             tr.innerHTML = `
                 <td class="p-2">
                     <select onchange="onPosProductChange('${rowId}')" class="pos-item-prod-select w-full p-2 text-xs border border-slate-300 rounded-lg bg-white font-medium">
                         <option value="CUSTOM">-- Custom Input --</option>
-                        ${products.map(p => `<option value="${p.product_id}">${p.name} (Rp${p.selling_price.toLocaleString()})</option>`).join('')}
+                        ${productOptions}
                     </select>
                     <input type="text" placeholder="Deskripsi item..." class="pos-item-desc w-full p-2 text-xs border border-slate-300 rounded-lg mt-1 font-medium">
                 </td>
@@ -1933,9 +1877,10 @@ function getNextInvoiceSequence() {
         function handleCreateTransaction(e) {
             e.preventDefault();
 
+            const yearStr = new Date().getFullYear();
             sequence.invoiceCount++;
             const seqStr = String(sequence.invoiceCount).padStart(6, '0');
-            const newInvoiceNum = `${settings.invoice_prefix}-2026-${seqStr}`;
+            const newInvoiceNum = `${settings.invoice_prefix}-${yearStr}-${seqStr}`;
 
             const dateClean = new Date().toISOString().split('T')[0].replace(/-/g, '');
             sequence.transactionCount++;
@@ -2059,7 +2004,7 @@ function getNextInvoiceSequence() {
             }
 
             document.getElementById('inv-bank-name').textContent = settings.bank_name || 'Bank BCA';
-            document.getElementById('inv-bank-account-no').textContent = settings.bank_account_no || '-';
+            document.getElementById('inv-bank-account-no').textContent = settings.bank_account_no || '0657665600';
             document.getElementById('inv-bank-account-name').textContent = settings.bank_account_name || settings.company_name;
 
             document.getElementById('inv-doc-number').textContent = inv.invoice_number;
@@ -2262,6 +2207,17 @@ function getNextInvoiceSequence() {
                 return true;
             });
 
+            if (filtered.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="8" class="p-6 text-center text-slate-400 font-medium">
+                            Belum ada invoice. Klik tombol <strong>Transaksi Baru</strong> di kanan atas untuk membuat transaksi.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
             tbody.innerHTML = filtered.map(inv => {
                 const cus = customers.find(c => c.customer_id === inv.customer_id) || { customer_name: '-', company_name: '-' };
                 let badgeClass = 'bg-slate-100 text-slate-700';
@@ -2297,19 +2253,33 @@ function getNextInvoiceSequence() {
         function renderPaymentsTable() {
             const tbody = document.getElementById('payments-tbody');
             let todayTotal = 0, monthTotal = 0, yearTotal = 0, total = 0;
-            const todayStr = new Date().toISOString().split('T')[0];
+            const now = new Date();
+            const todayStr = now.toISOString().split('T')[0];
+            const currentYearStr = String(now.getFullYear());
+            const currentMonthStr = `${currentYearStr}-${String(now.getMonth() + 1).padStart(2, '0')}`;
 
             payments.forEach(p => {
                 total += p.amount;
                 if (p.payment_date === todayStr) todayTotal += p.amount;
-                if (p.payment_date.startsWith('2026-09')) monthTotal += p.amount;
-                if (p.payment_date.startsWith('2026')) yearTotal += p.amount;
+                if (p.payment_date.startsWith(currentMonthStr)) monthTotal += p.amount;
+                if (p.payment_date.startsWith(currentYearStr)) yearTotal += p.amount;
             });
 
             document.getElementById('pay-stat-today').textContent = formatIDR(todayTotal);
             document.getElementById('pay-stat-month').textContent = formatIDR(monthTotal);
             document.getElementById('pay-stat-year').textContent = formatIDR(yearTotal);
             document.getElementById('pay-stat-total').textContent = formatIDR(total);
+
+            if (payments.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="8" class="p-6 text-center text-slate-400 font-medium">
+                            Belum ada jurnal pembayaran.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
 
             tbody.innerHTML = payments.map(p => `
                 <tr class="hover:bg-slate-50">
@@ -2327,6 +2297,17 @@ function getNextInvoiceSequence() {
 
         function renderTransactionsTable() {
             const tbody = document.getElementById('transactions-tbody');
+            if (transactions.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="10" class="p-6 text-center text-slate-400 font-medium">
+                            Belum ada riwayat transaksi.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
             tbody.innerHTML = transactions.map(t => {
                 const cus = customers.find(c => c.customer_id === t.customer_id) || { customer_name: '-' };
                 return `
@@ -2367,6 +2348,17 @@ function getNextInvoiceSequence() {
 
         function renderProductsTable() {
             const tbody = document.getElementById('products-tbody');
+            if (products.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="7" class="p-6 text-center text-slate-400 font-medium">
+                            Katalog produk masih kosong. Klik <strong>Tambah Produk</strong> untuk memasukkan master harga standar.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
             tbody.innerHTML = products.map(p => `
                 <tr class="hover:bg-slate-50">
                     <td class="p-3 font-mono font-bold text-slate-800">${p.product_id}</td>
@@ -2386,8 +2378,10 @@ function getNextInvoiceSequence() {
             let totalSales = 0, totalDPP = 0, totalPPN = 0, taxTxnCount = 0;
             const tbody = document.getElementById('tax-report-tbody');
 
-            tbody.innerHTML = invoices.map(inv => {
-                if (inv.payment_status === 'CANCELLED') return '';
+            let rowsHtml = '';
+
+            invoices.forEach(inv => {
+                if (inv.payment_status === 'CANCELLED') return;
 
                 const cus = customers.find(c => c.customer_id === inv.customer_id) || { customer_name: '-', npwp: '-' };
                 totalSales += inv.grand_total;
@@ -2395,7 +2389,7 @@ function getNextInvoiceSequence() {
                 totalPPN += inv.tax_amount;
                 if (inv.tax_amount > 0) taxTxnCount++;
 
-                return `
+                rowsHtml += `
                     <tr class="hover:bg-slate-50">
                         <td class="p-3">${formatDate(inv.invoice_date)}</td>
                         <td class="p-3 font-bold text-brand-orange">${inv.invoice_number}</td>
@@ -2408,7 +2402,19 @@ function getNextInvoiceSequence() {
                         <td class="p-3 text-right font-bold text-slate-900">${formatIDR(inv.grand_total)}</td>
                     </tr>
                 `;
-            }).join('');
+            });
+
+            if (!rowsHtml) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="9" class="p-6 text-center text-slate-400 font-medium">
+                            Belum ada data rekonsiliasi pajak.
+                        </td>
+                    </tr>
+                `;
+            } else {
+                tbody.innerHTML = rowsHtml;
+            }
 
             document.getElementById('tax-stat-sales').textContent = formatIDR(totalSales);
             document.getElementById('tax-stat-dpp').textContent = formatIDR(totalDPP);
@@ -2425,12 +2431,15 @@ function getNextInvoiceSequence() {
                 cusMap[name] = (cusMap[name] || 0) + i.grand_total;
             });
 
-            document.getElementById('report-customer-list').innerHTML = Object.keys(cusMap).map(name => `
-                <div class="flex justify-between items-center bg-slate-50 p-2.5 rounded-lg border border-slate-200">
-                    <span class="font-bold text-slate-800">${name}</span>
-                    <span class="font-extrabold text-brand-orange">${formatIDR(cusMap[name])}</span>
-                </div>
-            `).join('');
+            const cusKeys = Object.keys(cusMap);
+            document.getElementById('report-customer-list').innerHTML = cusKeys.length > 0 
+                ? cusKeys.map(name => `
+                    <div class="flex justify-between items-center bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                        <span class="font-bold text-slate-800">${name}</span>
+                        <span class="font-extrabold text-brand-orange">${formatIDR(cusMap[name])}</span>
+                    </div>
+                `).join('')
+                : `<p class="text-slate-400 text-xs italic">Belum ada data penjualan.</p>`;
 
             const methodMap = {};
             invoices.forEach(i => {
@@ -2439,16 +2448,30 @@ function getNextInvoiceSequence() {
                 methodMap[m] = (methodMap[m] || 0) + i.grand_total;
             });
 
-            document.getElementById('report-method-list').innerHTML = Object.keys(methodMap).map(m => `
-                <div class="flex justify-between items-center bg-slate-50 p-2.5 rounded-lg border border-slate-200">
-                    <span class="font-bold text-slate-800">${m}</span>
-                    <span class="font-extrabold text-emerald-600">${formatIDR(methodMap[m])}</span>
-                </div>
-            `).join('');
+            const methodKeys = Object.keys(methodMap);
+            document.getElementById('report-method-list').innerHTML = methodKeys.length > 0 
+                ? methodKeys.map(m => `
+                    <div class="flex justify-between items-center bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                        <span class="font-bold text-slate-800">${m}</span>
+                        <span class="font-extrabold text-emerald-600">${formatIDR(methodMap[m])}</span>
+                    </div>
+                `).join('')
+                : `<p class="text-slate-400 text-xs italic">Belum ada data penjualan.</p>`;
         }
 
         function renderAuditLog() {
             const tbody = document.getElementById('audit-log-tbody');
+            if (auditLogs.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="p-6 text-center text-slate-400 font-medium">
+                            Jurnal audit bersih (Belum ada aktivitas).
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
             tbody.innerHTML = auditLogs.map(log => `
                 <tr class="hover:bg-slate-50">
                     <td class="p-3 font-mono text-slate-500">${log.timestamp}</td>
@@ -2493,6 +2516,30 @@ function getNextInvoiceSequence() {
             showNotification(`Customer ${newCus.customer_name} berhasil ditambahkan!`);
         }
 
+        function openAddProductModal() {
+            const name = prompt("Masukkan Nama Produk / Jasa Baru:");
+            if (!name) return;
+            const price = parseFloat(prompt("Masukkan Harga Jual (Rp):") || '0');
+            const category = prompt("Masukkan Kategori (Workshop/Material/Service):") || "General";
+
+            const newId = `PROD-${String(products.length + 1).padStart(3, '0')}`;
+            products.push({
+                product_id: newId,
+                name: name,
+                category: category,
+                description: name,
+                selling_price: price,
+                cost_price: 0,
+                taxable: false,
+                active: true
+            });
+
+            logAudit('CREATE', 'PRODUCT', newId, `Menambah produk baru: ${name}`);
+            renderProductsTable();
+            resetPosForm();
+            showNotification(`Produk ${name} berhasil ditambahkan!`);
+        }
+
         function loadSettingsForm() {
             document.getElementById('setting-company').value = settings.company_name;
             document.getElementById('setting-brand').value = settings.brand_name;
@@ -2501,7 +2548,7 @@ function getNextInvoiceSequence() {
             document.getElementById('setting-website').value = settings.website || '';
             document.getElementById('setting-npwp').value = settings.npwp;
             document.getElementById('setting-bank-name').value = settings.bank_name || 'Bank BCA';
-            document.getElementById('setting-bank-no').value = settings.bank_account_no || '';
+            document.getElementById('setting-bank-no').value = settings.bank_account_no || '0657665600';
             document.getElementById('setting-bank-an').value = settings.bank_account_name || settings.company_name;
             document.getElementById('setting-address').value = settings.address;
             document.getElementById('setting-prefix').value = settings.invoice_prefix;
@@ -2551,37 +2598,41 @@ function getNextInvoiceSequence() {
         }
 
         function exportInvoicesCSV() {
+            const dateStr = new Date().toISOString().split('T')[0];
             const rows = [["Invoice Number", "Date", "Customer", "Subtotal", "Discount", "Taxable", "Tax", "Grand Total", "Paid", "Due", "Status"]];
             invoices.forEach(i => {
                 const cus = customers.find(c => c.customer_id === i.customer_id);
                 rows.push([i.invoice_number, i.invoice_date, cus ? cus.customer_name : '-', i.subtotal, i.discount, i.taxable_amount, i.tax_amount, i.grand_total, i.amount_paid, i.amount_due, i.payment_status]);
             });
-            exportToCSV(`RKU_Invoices_2026-09.csv`, rows);
+            exportToCSV(`RKU_Invoices_${dateStr}.csv`, rows);
         }
 
         function exportPaymentsCSV() {
+            const dateStr = new Date().toISOString().split('T')[0];
             const rows = [["Payment ID", "Date", "Invoice Number", "Customer", "Amount", "Method", "Reference", "Created By"]];
             payments.forEach(p => {
                 rows.push([p.payment_id, p.payment_date, p.invoice_number, p.customer_name, p.amount, p.payment_method, p.reference_number, p.created_by]);
             });
-            exportToCSV(`RKU_Payments_2026-09.csv`, rows);
+            exportToCSV(`RKU_Payments_${dateStr}.csv`, rows);
         }
 
         function exportTransactionsCSV() {
+            const dateStr = new Date().toISOString().split('T')[0];
             const rows = [["Transaction ID", "Invoice Number", "Date", "Customer ID", "Subtotal", "Discount", "Taxable Amount", "Tax Amount", "Grand Total", "Payment Status"]];
             transactions.forEach(t => {
                 rows.push([t.transaction_id, t.invoice_number, t.invoice_date, t.customer_id, t.subtotal, t.discount, t.taxable_amount, t.tax_amount, t.grand_total, t.payment_status]);
             });
-            exportToCSV(`RKU_Transactions_2026-09.csv`, rows);
+            exportToCSV(`RKU_Transactions_${dateStr}.csv`, rows);
         }
 
         function exportTaxReportCSV() {
+            const dateStr = new Date().toISOString().split('T')[0];
             const rows = [["Date", "Invoice Number", "Customer Name", "NPWP", "Subtotal", "Discount", "Taxable Amount (DPP)", "Tax Rate (%)", "Tax Amount (PPN)", "Grand Total", "Payment Status"]];
             invoices.forEach(i => {
                 const cus = customers.find(c => c.customer_id === i.customer_id);
                 rows.push([i.invoice_date, i.invoice_number, cus ? cus.customer_name : '-', cus ? cus.npwp : '-', i.subtotal, i.discount, i.taxable_amount, i.tax_rate, i.tax_amount, i.grand_total, i.payment_status]);
             });
-            exportToCSV(`RKU_Tax_Report_2026-09.csv`, rows);
+            exportToCSV(`RKU_Tax_Report_${dateStr}.csv`, rows);
         }
 
         function exportSalesReportCSV() { exportInvoicesCSV(); }
