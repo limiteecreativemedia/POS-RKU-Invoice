@@ -72,7 +72,6 @@
             }
         }
 
-        /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 6px;
             height: 6px;
@@ -114,7 +113,7 @@
                         <div>
                             <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilih Role Akses</label>
                             <select id="login-role" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-orange focus:border-brand-orange font-medium text-slate-800 bg-white">
-                                <option value="ADMIN">ADMIN (Akses Penuh + System Setting)</option>
+                                <option value="ADMIN">ADMIN (Akses Penuh + Edit/Delete)</option>
                                 <option value="MANAGER">MANAGER (Lihat Data, Laporan & Transaksi)</option>
                                 <option value="STAFF">STAFF (Input POS & Buat Invoice)</option>
                             </select>
@@ -256,6 +255,11 @@
                 </div>
 
                 <div class="flex items-center gap-3">
+                    <button onclick="confirmResetAllData()" class="px-3 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 rounded-lg text-xs font-bold flex items-center gap-1.5 transition">
+                        <i class="fa-solid fa-rotate-right"></i>
+                        <span class="hidden md:inline">Reset Semua Data</span>
+                    </button>
+
                     <div class="relative hidden sm:block">
                         <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400 text-xs"></i>
                         <input type="text" id="global-search" onkeyup="handleGlobalSearch(event)" placeholder="Cari No Invoice, Customer..." class="pl-8 pr-4 py-1.5 text-xs bg-slate-100 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-orange w-60">
@@ -272,7 +276,6 @@
 
                 <!-- 1. DASHBOARD VIEW -->
                 <section id="view-dashboard" class="view-panel space-y-6">
-                    <!-- Dashboard Filter Bar -->
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
                         <div>
                             <h3 class="font-bold text-slate-800 text-sm">Ringkasan Kinerja Bisnis</h3>
@@ -288,7 +291,6 @@
                     </div>
 
                     <!-- Metrics Sections -->
-                    <!-- TODAY STATS -->
                     <div>
                         <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Kinerja Hari Ini (TODAY)</h4>
                         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
@@ -327,7 +329,6 @@
 
                     <!-- THIS MONTH & YTD -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <!-- THIS MONTH -->
                         <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
                             <div class="flex justify-between items-center border-b pb-3 border-slate-100">
                                 <h4 class="font-bold text-slate-800 text-sm flex items-center gap-2">
@@ -356,7 +357,6 @@
                             </div>
                         </div>
 
-                        <!-- YEAR TO DATE -->
                         <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
                             <div class="flex justify-between items-center border-b pb-3 border-slate-100">
                                 <h4 class="font-bold text-slate-800 text-sm flex items-center gap-2">
@@ -418,7 +418,6 @@
                         </div>
 
                         <form id="pos-form" onsubmit="handleCreateTransaction(event)" class="space-y-6">
-                            <!-- Header Info -->
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                 <div>
                                     <label class="block text-xs font-semibold text-slate-700 uppercase mb-1.5">Tanggal Transaksi</label>
@@ -428,7 +427,6 @@
                                     <label class="block text-xs font-semibold text-slate-700 uppercase mb-1.5">Pelanggan (Customer)</label>
                                     <div class="flex gap-2">
                                         <select id="pos-customer-select" required onchange="onCustomerSelectChange()" class="w-full px-3.5 py-2.5 text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-orange focus:border-brand-orange bg-white">
-                                            <!-- Dynamically populated -->
                                         </select>
                                         <button type="button" onclick="openAddCustomerModal()" title="Tambah Pelanggan Baru" class="px-3 bg-slate-100 border border-slate-300 rounded-xl hover:bg-slate-200 text-slate-700 shrink-0">
                                             <i class="fa-solid fa-user-plus"></i>
@@ -441,7 +439,6 @@
                                 </div>
                             </div>
 
-                            <!-- Items Table Header -->
                             <div class="space-y-3">
                                 <div class="flex justify-between items-center">
                                     <h4 class="text-sm font-bold text-slate-800">Daftar Item / Produk / Layanan</h4>
@@ -463,13 +460,11 @@
                                             </tr>
                                         </thead>
                                         <tbody id="pos-items-tbody" class="divide-y divide-slate-200">
-                                            <!-- Dynamic Rows -->
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
 
-                            <!-- Calculations & Summary -->
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
                                 <div class="space-y-4">
                                     <div>
@@ -519,7 +514,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Summary Card -->
                                 <div class="bg-slate-900 text-white p-5 rounded-2xl flex flex-col justify-between space-y-4 shadow-lg">
                                     <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-800 pb-2">Ringkasan Kalkulasi Otomatis</h4>
                                     
@@ -562,7 +556,7 @@
                         <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-3">
                             <div>
                                 <h3 class="font-bold text-slate-800 text-base">Daftar Kelola Invoice</h3>
-                                <p class="text-xs text-slate-500">Seluruh dokumen invoice resmi yang telah diterbitkan</p>
+                                <p class="text-xs text-slate-500">Seluruh dokumen invoice resmi yang telah diterbitkan (Bisa Di-edit / Dihapus jika ada kesalahan)</p>
                             </div>
                             <div class="flex flex-wrap items-center gap-2">
                                 <select id="invoice-filter-status" onchange="renderInvoicesTable()" class="px-3 py-1.5 text-xs border border-slate-300 rounded-lg bg-white font-semibold">
@@ -578,7 +572,6 @@
                             </div>
                         </div>
 
-                        <!-- Table -->
                         <div class="overflow-x-auto border border-slate-200 rounded-xl">
                             <table class="w-full text-left text-xs">
                                 <thead class="bg-slate-50 text-slate-700 font-semibold uppercase border-b border-slate-200">
@@ -590,11 +583,10 @@
                                         <th class="p-3 text-right">Dibayar</th>
                                         <th class="p-3 text-right">Outstanding</th>
                                         <th class="p-3 text-center">Status</th>
-                                        <th class="p-3 text-center">Aksi</th>
+                                        <th class="p-3 text-center">Aksi / Opsi Edit</th>
                                     </tr>
                                 </thead>
                                 <tbody id="invoices-tbody" class="divide-y divide-slate-200 bg-white">
-                                    <!-- Dynamic Rows -->
                                 </tbody>
                             </table>
                         </div>
@@ -614,7 +606,6 @@
                             </button>
                         </div>
 
-                        <!-- Stats Banner -->
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                             <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
                                 <p class="text-[11px] text-slate-500 font-medium">Pembayaran Hari Ini</p>
@@ -634,7 +625,6 @@
                             </div>
                         </div>
 
-                        <!-- Payments Table -->
                         <div class="overflow-x-auto border border-slate-200 rounded-xl">
                             <table class="w-full text-left text-xs">
                                 <thead class="bg-slate-50 text-slate-700 font-semibold uppercase border-b border-slate-200">
@@ -650,7 +640,6 @@
                                     </tr>
                                 </thead>
                                 <tbody id="payments-tbody" class="divide-y divide-slate-200 bg-white">
-                                    <!-- Dynamic rows -->
                                 </tbody>
                             </table>
                         </div>
@@ -687,7 +676,6 @@
                                     </tr>
                                 </thead>
                                 <tbody id="transactions-tbody" class="divide-y divide-slate-200 bg-white">
-                                    <!-- Dynamic rows -->
                                 </tbody>
                             </table>
                         </div>
@@ -721,7 +709,6 @@
                                     </tr>
                                 </thead>
                                 <tbody id="customers-tbody" class="divide-y divide-slate-200 bg-white">
-                                    <!-- Dynamic rows -->
                                 </tbody>
                             </table>
                         </div>
@@ -755,7 +742,6 @@
                                     </tr>
                                 </thead>
                                 <tbody id="products-tbody" class="divide-y divide-slate-200 bg-white">
-                                    <!-- Dynamic rows -->
                                 </tbody>
                             </table>
                         </div>
@@ -775,21 +761,16 @@
                             </button>
                         </div>
 
-                        <!-- Report Cards Grid -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <!-- Sales By Customer -->
                             <div class="border border-slate-200 rounded-xl p-4 space-y-3">
                                 <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wider">Top Penjualan Berdasarkan Pelanggan</h4>
                                 <div id="report-customer-list" class="space-y-2 text-xs">
-                                    <!-- Dynamic -->
                                 </div>
                             </div>
 
-                            <!-- Sales By Payment Method -->
                             <div class="border border-slate-200 rounded-xl p-4 space-y-3">
                                 <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wider">Penjualan Berdasarkan Metode Pembayaran</h4>
                                 <div id="report-method-list" class="space-y-2 text-xs">
-                                    <!-- Dynamic -->
                                 </div>
                             </div>
                         </div>
@@ -817,7 +798,6 @@
                             </button>
                         </div>
 
-                        <!-- Tax Metrics -->
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                             <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
                                 <p class="text-[11px] text-slate-500 font-medium">Total Penjualan</p>
@@ -837,7 +817,6 @@
                             </div>
                         </div>
 
-                        <!-- Tax Table -->
                         <div class="overflow-x-auto border border-slate-200 rounded-xl">
                             <table class="w-full text-left text-xs">
                                 <thead class="bg-slate-50 text-slate-700 font-semibold uppercase border-b border-slate-200">
@@ -854,7 +833,6 @@
                                     </tr>
                                 </thead>
                                 <tbody id="tax-report-tbody" class="divide-y divide-slate-200 bg-white">
-                                    <!-- Dynamic rows -->
                                 </tbody>
                             </table>
                         </div>
@@ -882,7 +860,6 @@
                                     </tr>
                                 </thead>
                                 <tbody id="audit-log-tbody" class="divide-y divide-slate-200 bg-white">
-                                    <!-- Dynamic rows -->
                                 </tbody>
                             </table>
                         </div>
@@ -892,9 +869,14 @@
                 <!-- 11. SETTINGS VIEW -->
                 <section id="view-settings" class="view-panel hidden space-y-6">
                     <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-6">
-                        <div class="border-b border-slate-200 pb-4">
-                            <h3 class="font-bold text-slate-800 text-base">Pengaturan Perusahaan & Invoice</h3>
-                            <p class="text-xs text-slate-500">Konfigurasi data PT Ruang Kreasi Utama yang tampil pada dokumen invoice</p>
+                        <div class="border-b border-slate-200 pb-4 flex justify-between items-center">
+                            <div>
+                                <h3 class="font-bold text-slate-800 text-base">Pengaturan Perusahaan & Invoice</h3>
+                                <p class="text-xs text-slate-500">Konfigurasi data PT Ruang Kreasi Utama yang tampil pada dokumen invoice</p>
+                            </div>
+                            <button type="button" onclick="confirmResetAllData()" class="px-3 py-2 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-xl text-xs flex items-center gap-1.5 shadow-sm">
+                                <i class="fa-solid fa-trash-can"></i> Reset Semua Data (Mulai dari Nol)
+                            </button>
                         </div>
 
                         <form id="settings-form" onsubmit="handleSaveSettings(event)" class="space-y-4">
@@ -999,7 +981,6 @@
                             </span>
                         </div>
 
-                        <!-- Data Flow Diagram -->
                         <div class="bg-slate-900 text-white p-4 rounded-xl text-xs space-y-2">
                             <p class="font-bold text-orange-400 uppercase tracking-wider">Alur Aliran Data (Data Flow Architecture):</p>
                             <p class="font-mono text-slate-300">
@@ -1007,7 +988,6 @@
                             </p>
                         </div>
 
-                        <!-- Google Apps Script Source Code Block -->
                         <div class="space-y-2">
                             <div class="flex justify-between items-center">
                                 <h4 class="text-xs font-bold text-slate-700 uppercase">Kode Backend Google Apps Script (`Code.gs`)</h4>
@@ -1060,40 +1040,6 @@ function doPost(e) {
       .setMimeType(ContentService.MimeType.JSON);
   }
 }
-
-// SECURE SERVER-SIDE SEQUENTIAL INVOICE GENERATOR
-function getNextInvoiceSequence() {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
-  let sheet = ss.getSheetByName("INVOICE_SEQUENCE");
-  if (!sheet) {
-    sheet = ss.insertSheet("INVOICE_SEQUENCE");
-    sheet.appendRow(["year", "current_sequence"]);
-  }
-  
-  const currentYear = new Date().getFullYear();
-  const data = sheet.getDataRange().getValues();
-  let foundRow = -1;
-  let nextSeq = 1;
-  
-  for (let i = 1; i < data.length; i++) {
-    if (data[i][0] == currentYear) {
-      foundRow = i + 1;
-      nextSeq = data[i][1] + 1;
-      break;
-    }
-  }
-  
-  if (foundRow > 0) {
-    sheet.getRange(foundRow, 2).setValue(nextSeq);
-  } else {
-    sheet.appendRow([currentYear, 1]);
-    nextSeq = 1;
-  }
-  
-  const seqPadded = String(nextSeq).padStart(6, '0');
-  const invoiceNum = "RKU-INV-" + currentYear + "-" + seqPadded;
-  return invoiceNum;
-}
                             </pre>
                         </div>
                     </div>
@@ -1107,13 +1053,15 @@ function getNextInvoiceSequence() {
     <div id="invoice-preview-modal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden overflow-y-auto p-4 sm:p-6 flex justify-center items-start">
         <div class="bg-white rounded-2xl shadow-2xl border border-slate-200 w-full max-w-4xl overflow-hidden my-6">
             
-            <!-- Modal Header Actions (No Print) -->
             <div class="no-print bg-slate-900 text-white p-4 flex flex-wrap items-center justify-between gap-3 border-b border-slate-800">
                 <div class="flex items-center gap-2">
                     <span class="w-3 h-3 rounded-full bg-brand-orange"></span>
                     <h3 class="font-bold text-sm">Dokumen Invoice Resmi - PT Ruang Kreasi Utama</h3>
                 </div>
                 <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="openEditInvoiceModalFromPreview()" class="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded-lg text-xs font-bold flex items-center gap-1.5 transition">
+                        <i class="fa-solid fa-pen-to-square"></i> Edit Invoice
+                    </button>
                     <button onclick="downloadPDF()" class="px-3.5 py-1.5 bg-brand-orange hover:bg-brand-hover text-white rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-sm transition">
                         <i class="fa-solid fa-file-pdf text-sm"></i> Simpan PDF
                     </button>
@@ -1192,7 +1140,6 @@ function getNextInvoiceSequence() {
                                 </tr>
                             </thead>
                             <tbody id="inv-items-table-body" class="divide-y divide-slate-200">
-                                <!-- Dynamic Items -->
                             </tbody>
                         </table>
                     </div>
@@ -1213,7 +1160,6 @@ function getNextInvoiceSequence() {
                                     </div>
                                 </div>
 
-                                <!-- REKENING BANK PERUSAHAAN -->
                                 <div class="border-t border-slate-200 pt-2.5 space-y-1 text-xs">
                                     <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Pembayaran Transfer Rekening Resmi:</span>
                                     <div class="bg-white p-3 rounded-lg border border-slate-200 text-slate-800 space-y-1 font-medium">
@@ -1269,12 +1215,121 @@ function getNextInvoiceSequence() {
                     </div>
                 </div>
 
-                <!-- FOOTER -->
                 <div class="border-t border-slate-200 pt-6 text-center space-y-2">
                     <p id="inv-footer-note" class="text-xs font-medium text-slate-600">Terima kasih atas kepercayaan Anda bermitra dengan PT Ruang Kreasi Utama.</p>
                     <p class="text-[10px] text-slate-400">System Generated Document • PT Ruang Kreasi Utama</p>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- EDIT INVOICE MODAL -->
+    <div id="edit-invoice-modal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden overflow-y-auto p-4 sm:p-6 flex justify-center items-start">
+        <div class="bg-white rounded-2xl shadow-2xl border border-slate-200 w-full max-w-4xl p-6 space-y-6 my-6">
+            <div class="flex justify-between items-center border-b pb-4 border-slate-200">
+                <div>
+                    <h3 class="font-bold text-slate-800 text-lg flex items-center gap-2">
+                        <i class="fa-solid fa-pen-to-square text-brand-orange"></i> Edit Rincian Invoice
+                    </h3>
+                    <p class="text-xs text-slate-500">Perbarui item, harga, pelanggan, atau status pembayaran untuk mengoreksi kesalahan</p>
+                </div>
+                <button onclick="closeEditInvoiceModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+
+            <form id="edit-invoice-form" onsubmit="handleSaveEditedInvoice(event)" class="space-y-6">
+                <input type="hidden" id="edit-inv-number-hidden">
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">No Invoice (Read-only)</label>
+                        <input type="text" id="edit-inv-number-display" readonly class="w-full px-3 py-2 text-sm bg-slate-100 font-bold text-brand-orange border border-slate-300 rounded-xl">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Tanggal Transaksi</label>
+                        <input type="date" id="edit-inv-date" required class="w-full px-3 py-2 text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-orange">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Pelanggan</label>
+                        <select id="edit-inv-customer-select" required class="w-full px-3 py-2 text-sm border border-slate-300 rounded-xl bg-white focus:ring-2 focus:ring-brand-orange">
+                        </select>
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <h4 class="text-xs font-bold text-slate-800 uppercase">Daftar Item Invoice</h4>
+                        <button type="button" onclick="addEditPosItemRow()" class="text-xs font-bold bg-orange-50 text-brand-orange hover:bg-orange-100 px-3 py-1.5 rounded-lg border border-orange-200">
+                            + Tambah Item
+                        </button>
+                    </div>
+
+                    <div class="overflow-x-auto border border-slate-200 rounded-xl">
+                        <table class="w-full text-left text-xs">
+                            <thead class="bg-slate-50 text-slate-700 uppercase font-semibold border-b border-slate-200">
+                                <tr>
+                                    <th class="p-2.5 w-5/12">Deskripsi Item</th>
+                                    <th class="p-2.5 w-2/12 text-center">Qty</th>
+                                    <th class="p-2.5 w-2/12 text-right">Harga Satuan (Rp)</th>
+                                    <th class="p-2.5 w-1/12 text-right">Diskon (Rp)</th>
+                                    <th class="p-2.5 w-2/12 text-right">Total (Rp)</th>
+                                    <th class="p-2.5 w-1/12 text-center">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="edit-items-tbody" class="divide-y divide-slate-200">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="space-y-3 text-xs">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1 uppercase">Catatan Invoice</label>
+                            <textarea id="edit-inv-notes" rows="3" class="w-full p-2.5 border border-slate-300 rounded-xl"></textarea>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block font-semibold text-slate-700 mb-1 uppercase">Metode Pembayaran</label>
+                                <select id="edit-inv-payment-method" class="w-full p-2 border border-slate-300 rounded-xl bg-white">
+                                    <option value="Bank Transfer">Bank Transfer</option>
+                                    <option value="Cash">Cash</option>
+                                    <option value="QRIS">QRIS</option>
+                                    <option value="E-Wallet">E-Wallet</option>
+                                    <option value="Other">Lainnya</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block font-semibold text-slate-700 mb-1 uppercase">Status Pembayaran</label>
+                                <select id="edit-inv-payment-status" class="w-full p-2 border border-slate-300 rounded-xl bg-white font-semibold">
+                                    <option value="PAID">PAID (Lunas)</option>
+                                    <option value="PARTIAL">PARTIAL (Sebagian)</option>
+                                    <option value="UNPAID">UNPAID (Belum Bayar)</option>
+                                    <option value="CANCELLED">CANCELLED (Batal)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2 text-xs">
+                        <div class="flex justify-between text-slate-600">
+                            <span>Subtotal Baru:</span>
+                            <span id="edit-summary-subtotal" class="font-semibold text-slate-800">Rp0</span>
+                        </div>
+                        <div class="flex justify-between text-slate-600">
+                            <span>Total Diskon Baru:</span>
+                            <span id="edit-summary-discount" class="font-semibold text-rose-600">-Rp0</span>
+                        </div>
+                        <div class="flex justify-between text-slate-600 border-b border-slate-200 pb-2">
+                            <span>Grand Total Baru:</span>
+                            <span id="edit-summary-grandtotal" class="font-bold text-brand-orange text-sm">Rp0</span>
+                        </div>
+                        <div class="pt-2 flex justify-end gap-2">
+                            <button type="button" onclick="closeEditInvoiceModal()" class="px-4 py-2 border border-slate-300 text-slate-700 rounded-xl font-bold">Batal</button>
+                            <button type="submit" class="px-5 py-2 bg-brand-orange hover:bg-brand-hover text-white rounded-xl font-bold shadow-md">Simpan Perubahan</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -1337,7 +1392,7 @@ function getNextInvoiceSequence() {
             </div>
             
             <form onsubmit="handleConfirmCancelInvoice(event)" class="space-y-4 text-xs">
-                <p class="text-slate-600">Sesuai prinsip integritas akuntansi, invoice tidak boleh dihapus secara permanen. Status akan diubah menjadi <strong class="text-rose-600">CANCELLED</strong>.</p>
+                <p class="text-slate-600">Sesuai prinsip integritas akuntansi, status invoice akan diubah menjadi <strong class="text-rose-600">CANCELLED</strong>.</p>
                 <div>
                     <label class="block font-semibold text-slate-700 mb-1">Alasan Pembatalan</label>
                     <textarea id="cancel-reason-input" required rows="3" placeholder="Salah input item / kesalahan pesanan pelanggan..." class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-rose-500"></textarea>
@@ -1411,9 +1466,7 @@ function getNextInvoiceSequence() {
     </div>
 
     <script>
-        // GLOBAL STATE ENGINE (LIVE OPERATIONAL INITIALIZATION)
         let currentUser = { name: "Admin RKU", role: "ADMIN" };
-
         const currentYear = new Date().getFullYear();
 
         let settings = {
@@ -1431,14 +1484,10 @@ function getNextInvoiceSequence() {
             tax_name: "PPN",
             tax_rate: 11,
             tax_enabled: false,
-            invoice_footer: "Terima kasih atas kepercayaan Anda bermitra dengan PT Ruang Kreasi Utama.",
-            google_drive_folder_id: "",
-            web_app_url: ""
+            invoice_footer: "Terima kasih atas kepercayaan Anda bermitra dengan PT Ruang Kreasi Utama."
         };
 
-        // CLEAN OPERATIONAL INITIAL ARRAYS
         let sequence = { invoiceYear: currentYear, invoiceCount: 0, transactionCount: 0, customerCount: 1, paymentCount: 0 };
-
         let customers = [
             { customer_id: "CUS-000001", customer_name: "Pelanggan Umum", company_name: "Cash", customer_type: "Individual", phone: "-", email: "-", address: "-", npwp: "", notes: "Default", created_at: new Date().toISOString().split('T')[0] }
         ];
@@ -1453,7 +1502,45 @@ function getNextInvoiceSequence() {
         let chartSalesInstance = null;
         let chartStatusInstance = null;
 
+        // LOCAL STORAGE PERSISTENCE LOGIC
+        function loadStateFromStorage() {
+            try {
+                const storedInvoices = localStorage.getItem('rku_invoices');
+                const storedTxns = localStorage.getItem('rku_txns');
+                const storedPay = localStorage.getItem('rku_payments');
+                const storedCus = localStorage.getItem('rku_customers');
+                const storedSeq = localStorage.getItem('rku_seq');
+                const storedProd = localStorage.getItem('rku_products');
+                const storedAudit = localStorage.getItem('rku_audit');
+
+                if (storedInvoices) invoices = JSON.parse(storedInvoices);
+                if (storedTxns) transactions = JSON.parse(storedTxns);
+                if (storedPay) payments = JSON.parse(storedPay);
+                if (storedCus) customers = JSON.parse(storedCus);
+                if (storedSeq) sequence = JSON.parse(storedSeq);
+                if (storedProd) products = JSON.parse(storedProd);
+                if (storedAudit) auditLogs = JSON.parse(storedAudit);
+            } catch (e) {
+                console.error("Storage error:", e);
+            }
+        }
+
+        function saveStateToStorage() {
+            try {
+                localStorage.setItem('rku_invoices', JSON.stringify(invoices));
+                localStorage.setItem('rku_txns', JSON.stringify(transactions));
+                localStorage.setItem('rku_payments', JSON.stringify(payments));
+                localStorage.setItem('rku_customers', JSON.stringify(customers));
+                localStorage.setItem('rku_seq', JSON.stringify(sequence));
+                localStorage.setItem('rku_products', JSON.stringify(products));
+                localStorage.setItem('rku_audit', JSON.stringify(auditLogs));
+            } catch (e) {
+                console.error("Storage save error:", e);
+            }
+        }
+
         window.onload = function() {
+            loadStateFromStorage();
             initApp();
         };
 
@@ -1467,6 +1554,19 @@ function getNextInvoiceSequence() {
                 toast.style.transform = 'translateY(10px)';
                 setTimeout(() => toast.remove(), 300);
             }, 3000);
+        }
+
+        function confirmResetAllData() {
+            if (confirm("Apakah Anda YAKIN ingin menghapus SELURUH data transaksi dan memulainya dari awal (0)? Tindakan ini tidak dapat dibatalkan!")) {
+                invoices = [];
+                transactions = [];
+                payments = [];
+                auditLogs = [];
+                sequence = { invoiceYear: new Date().getFullYear(), invoiceCount: 0, transactionCount: 0, customerCount: 1, paymentCount: 0 };
+                saveStateToStorage();
+                initApp();
+                showNotification("Seluruh data transaksi telah berhasil dibersihkan!", "error");
+            }
         }
 
         function initApp() {
@@ -1579,6 +1679,7 @@ function getNextInvoiceSequence() {
                 record_id: recordId,
                 description: description
             });
+            saveStateToStorage();
             renderAuditLog();
         }
 
@@ -1653,7 +1754,9 @@ function getNextInvoiceSequence() {
         }
 
         function renderDashboardCharts() {
-            const ctxSales = document.getElementById('chart-sales-monthly').getContext('2d');
+            const ctxSalesElem = document.getElementById('chart-sales-monthly');
+            if (!ctxSalesElem) return;
+            const ctxSales = ctxSalesElem.getContext('2d');
             if (chartSalesInstance) chartSalesInstance.destroy();
 
             const monthlyData = new Array(12).fill(0);
@@ -1661,7 +1764,7 @@ function getNextInvoiceSequence() {
 
             invoices.forEach(inv => {
                 if (inv.payment_status === 'CANCELLED') return;
-                if (inv.invoice_date.startsWith(currentYearStr)) {
+                if (inv.invoice_date && inv.invoice_date.startsWith(currentYearStr)) {
                     const mIndex = parseInt(inv.invoice_date.split('-')[1], 10) - 1;
                     if (mIndex >= 0 && mIndex < 12) {
                         monthlyData[mIndex] += inv.grand_total;
@@ -1727,11 +1830,9 @@ function getNextInvoiceSequence() {
             tbody.innerHTML = '';
             addPosItemRow();
 
-            sequence.invoiceCount++;
-            const seqStr = String(sequence.invoiceCount).padStart(6, '0');
+            const seqStr = String(sequence.invoiceCount + 1).padStart(6, '0');
             const yearStr = new Date().getFullYear();
             document.getElementById('pos-next-invoice-num').textContent = `${settings.invoice_prefix}-${yearStr}-${seqStr}`;
-            sequence.invoiceCount--;
 
             calculatePosTotals();
         }
@@ -1968,6 +2069,7 @@ function getNextInvoiceSequence() {
             transactions.unshift(newInvoice);
 
             logAudit('CREATE', 'INVOICE', newInvoiceNum, `Terbit invoice ${newInvoiceNum} total ${formatIDR(grandTotal)} (${payStatus})`);
+            saveStateToStorage();
 
             renderDashboard();
             renderInvoicesTable();
@@ -1980,6 +2082,214 @@ function getNextInvoiceSequence() {
             openInvoicePreview(newInvoiceNum);
             showNotification(`Invoice ${newInvoiceNum} berhasil diterbitkan!`);
         }
+
+        // ================= EDIT INVOICE LOGIC =================
+        function openEditInvoiceModal(invoiceNum) {
+            const inv = invoices.find(i => i.invoice_number === invoiceNum);
+            if (!inv) return;
+
+            document.getElementById('edit-inv-number-hidden').value = inv.invoice_number;
+            document.getElementById('edit-inv-number-display').value = inv.invoice_number;
+            document.getElementById('edit-inv-date').value = inv.invoice_date;
+            document.getElementById('edit-inv-notes').value = inv.notes || '';
+            document.getElementById('edit-inv-payment-method').value = inv.payment_method || 'Bank Transfer';
+            document.getElementById('edit-inv-payment-status').value = inv.payment_status || 'UNPAID';
+
+            const cusSelect = document.getElementById('edit-inv-customer-select');
+            cusSelect.innerHTML = customers.map(c => `
+                <option value="${c.customer_id}" ${c.customer_id === inv.customer_id ? 'selected' : ''}>
+                    ${c.customer_name} (${c.company_name})
+                </option>
+            `).join('');
+
+            const tbody = document.getElementById('edit-items-tbody');
+            tbody.innerHTML = '';
+            
+            if (inv.items && inv.items.length > 0) {
+                inv.items.forEach(item => {
+                    addEditPosItemRow(item.description, item.quantity, item.unit_price, item.discount);
+                });
+            } else {
+                addEditPosItemRow();
+            }
+
+            calculateEditTotals();
+            document.getElementById('edit-invoice-modal').classList.remove('hidden');
+        }
+
+        function openEditInvoiceModalFromPreview() {
+            if (!currentActiveInvoice) return;
+            closeInvoicePreviewModal();
+            openEditInvoiceModal(currentActiveInvoice.invoice_number);
+        }
+
+        function closeEditInvoiceModal() {
+            document.getElementById('edit-invoice-modal').classList.add('hidden');
+        }
+
+        function addEditPosItemRow(desc = '', qty = 1, price = 0, disc = 0) {
+            const tbody = document.getElementById('edit-items-tbody');
+            const rowId = 'edit-row-' + Date.now() + Math.floor(Math.random() * 100);
+            
+            const tr = document.createElement('tr');
+            tr.id = rowId;
+            tr.className = "hover:bg-slate-50";
+
+            tr.innerHTML = `
+                <td class="p-2">
+                    <input type="text" value="${desc}" placeholder="Deskripsi item..." class="edit-item-desc w-full p-2 text-xs border border-slate-300 rounded-lg font-medium">
+                </td>
+                <td class="p-2 text-center">
+                    <input type="number" min="1" value="${qty}" oninput="calculateEditTotals()" class="edit-item-qty w-16 p-2 text-xs border border-slate-300 rounded-lg text-center font-bold">
+                </td>
+                <td class="p-2">
+                    <input type="number" min="0" value="${price}" oninput="calculateEditTotals()" class="edit-item-price w-full p-2 text-xs border border-slate-300 rounded-lg text-right font-bold">
+                </td>
+                <td class="p-2">
+                    <input type="number" min="0" value="${disc}" oninput="calculateEditTotals()" class="edit-item-disc w-full p-2 text-xs border border-slate-300 rounded-lg text-right">
+                </td>
+                <td class="p-2 text-right">
+                    <span class="edit-item-total text-xs font-bold text-slate-800">Rp0</span>
+                </td>
+                <td class="p-2 text-center">
+                    <button type="button" onclick="removeEditPosItemRow('${rowId}')" class="text-rose-500 hover:text-rose-700 p-1"><i class="fa-solid fa-trash-can"></i></button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+            calculateEditTotals();
+        }
+
+        function removeEditPosItemRow(rowId) {
+            const tbody = document.getElementById('edit-items-tbody');
+            if (tbody.children.length <= 1) return;
+            const row = document.getElementById(rowId);
+            if (row) row.remove();
+            calculateEditTotals();
+        }
+
+        function calculateEditTotals() {
+            const rows = document.querySelectorAll('#edit-items-tbody tr');
+            let subtotal = 0;
+            let totalDiscount = 0;
+
+            rows.forEach(tr => {
+                const qty = parseFloat(tr.querySelector('.edit-item-qty').value) || 0;
+                const price = parseFloat(tr.querySelector('.edit-item-price').value) || 0;
+                const disc = parseFloat(tr.querySelector('.edit-item-disc').value) || 0;
+
+                const lineSubtotal = qty * price;
+                const lineTotal = Math.max(0, lineSubtotal - disc);
+                
+                tr.querySelector('.edit-item-total').textContent = formatIDR(lineTotal);
+
+                subtotal += lineSubtotal;
+                totalDiscount += disc;
+            });
+
+            const grandTotal = Math.max(0, subtotal - totalDiscount);
+
+            document.getElementById('edit-summary-subtotal').textContent = formatIDR(subtotal);
+            document.getElementById('edit-summary-discount').textContent = `-${formatIDR(totalDiscount)}`;
+            document.getElementById('edit-summary-grandtotal').textContent = formatIDR(grandTotal);
+        }
+
+        function handleSaveEditedInvoice(e) {
+            e.preventDefault();
+            const invNum = document.getElementById('edit-inv-number-hidden').value;
+            const inv = invoices.find(i => i.invoice_number === invNum);
+            if (!inv) return;
+
+            const items = [];
+            document.querySelectorAll('#edit-items-tbody tr').forEach(tr => {
+                const desc = tr.querySelector('.edit-item-desc').value || 'Produk/Jasa';
+                const qty = parseFloat(tr.querySelector('.edit-item-qty').value) || 1;
+                const price = parseFloat(tr.querySelector('.edit-item-price').value) || 0;
+                const disc = parseFloat(tr.querySelector('.edit-item-disc').value) || 0;
+                items.push({
+                    description: desc,
+                    quantity: qty,
+                    unit_price: price,
+                    discount: disc,
+                    subtotal: Math.max(0, (qty * price) - disc)
+                });
+            });
+
+            let subtotal = 0, discount = 0;
+            items.forEach(i => {
+                subtotal += i.quantity * i.unit_price;
+                discount += i.discount;
+            });
+
+            const taxableAmount = Math.max(0, subtotal - discount);
+            const taxAmount = taxableAmount * (inv.tax_rate / 100);
+            const grandTotal = taxableAmount + taxAmount;
+
+            const newStatus = document.getElementById('edit-inv-payment-status').value;
+            let amountPaid = inv.amount_paid;
+            if (newStatus === 'PAID') amountPaid = grandTotal;
+            else if (newStatus === 'UNPAID') amountPaid = 0;
+
+            const amountDue = Math.max(0, grandTotal - amountPaid);
+
+            inv.items = items;
+            inv.subtotal = subtotal;
+            inv.discount = discount;
+            inv.taxable_amount = taxableAmount;
+            inv.tax_amount = taxAmount;
+            inv.grand_total = grandTotal;
+            inv.amount_paid = amountPaid;
+            inv.amount_due = amountDue;
+            inv.invoice_date = document.getElementById('edit-inv-date').value;
+            inv.customer_id = document.getElementById('edit-inv-customer-select').value;
+            inv.payment_method = document.getElementById('edit-inv-payment-method').value;
+            inv.payment_status = newStatus;
+            inv.notes = document.getElementById('edit-inv-notes').value;
+
+            // Sync transaction record
+            const txn = transactions.find(t => t.invoice_number === invNum);
+            if (txn) {
+                txn.items = items;
+                txn.subtotal = subtotal;
+                txn.discount = discount;
+                txn.grand_total = grandTotal;
+                txn.payment_status = newStatus;
+            }
+
+            logAudit('UPDATE', 'INVOICE', invNum, `Mengubah rincian invoice ${invNum}. Grand Total baru: ${formatIDR(grandTotal)}`);
+            saveStateToStorage();
+
+            closeEditInvoiceModal();
+            renderDashboard();
+            renderInvoicesTable();
+            renderTransactionsTable();
+            renderTaxReport();
+            renderSalesReport();
+
+            showNotification(`Invoice ${invNum} berhasil diperbarui!`);
+            openInvoicePreview(invNum);
+        }
+
+        function deleteInvoice(invoiceNum) {
+            if (confirm(`Apakah Anda yakin ingin MENGHAPUS PERMANEN invoice ${invoiceNum}? Data ini tidak bisa dikembalikan!`)) {
+                invoices = invoices.filter(i => i.invoice_number !== invoiceNum);
+                transactions = transactions.filter(t => t.invoice_number !== invoiceNum);
+                payments = payments.filter(p => p.invoice_number !== invoiceNum);
+
+                logAudit('DELETE', 'INVOICE', invoiceNum, `Menghapus invoice ${invoiceNum}`);
+                saveStateToStorage();
+
+                renderDashboard();
+                renderInvoicesTable();
+                renderPaymentsTable();
+                renderTransactionsTable();
+                renderTaxReport();
+                renderSalesReport();
+
+                showNotification(`Invoice ${invoiceNum} telah dihapus!`, 'error');
+            }
+        }
+
+        // ================= END EDIT INVOICE LOGIC =================
 
         function openInvoicePreview(invoiceNum) {
             const inv = invoices.find(i => i.invoice_number === invoiceNum);
@@ -2160,6 +2470,7 @@ function getNextInvoiceSequence() {
             });
 
             logAudit('PAYMENT', 'INVOICE', inv.invoice_number, `Mencatat pembayaran ${formatIDR(payAmount)} via ${payMethod}. Status: ${inv.payment_status}`);
+            saveStateToStorage();
 
             closeRecordPaymentModal();
             renderDashboard();
@@ -2190,6 +2501,7 @@ function getNextInvoiceSequence() {
             inv.cancellation_reason = reason;
 
             logAudit('CANCEL', 'INVOICE', inv.invoice_number, `Membatalkan invoice. Alasan: ${reason}`);
+            saveStateToStorage();
 
             closeCancelInvoiceModal();
             renderDashboard();
@@ -2240,9 +2552,15 @@ function getNextInvoiceSequence() {
                         <td class="p-3 text-center">
                             <span class="px-2.5 py-0.5 rounded-full text-[10px] ${badgeClass}">${inv.payment_status}</span>
                         </td>
-                        <td class="p-3 text-center">
-                            <button onclick="openInvoicePreview('${inv.invoice_number}')" class="px-2.5 py-1 bg-brand-orange hover:bg-brand-hover text-white rounded text-[11px] font-bold">
-                                View / A4
+                        <td class="p-3 text-center flex justify-center gap-1.5">
+                            <button onclick="openInvoicePreview('${inv.invoice_number}')" title="Pratinjau A4" class="px-2.5 py-1 bg-brand-orange hover:bg-brand-hover text-white rounded text-[11px] font-bold">
+                                View
+                            </button>
+                            <button onclick="openEditInvoiceModal('${inv.invoice_number}')" title="Edit Invoice" class="px-2.5 py-1 bg-amber-500 hover:bg-amber-600 text-white rounded text-[11px] font-bold">
+                                <i class="fa-solid fa-pen"></i>
+                            </button>
+                            <button onclick="deleteInvoice('${inv.invoice_number}')" title="Hapus Invoice" class="px-2 py-1 bg-rose-600 hover:bg-rose-700 text-white rounded text-[11px] font-bold">
+                                <i class="fa-solid fa-trash"></i>
                             </button>
                         </td>
                     </tr>
@@ -2261,8 +2579,8 @@ function getNextInvoiceSequence() {
             payments.forEach(p => {
                 total += p.amount;
                 if (p.payment_date === todayStr) todayTotal += p.amount;
-                if (p.payment_date.startsWith(currentMonthStr)) monthTotal += p.amount;
-                if (p.payment_date.startsWith(currentYearStr)) yearTotal += p.amount;
+                if (p.payment_date && p.payment_date.startsWith(currentMonthStr)) monthTotal += p.amount;
+                if (p.payment_date && p.payment_date.startsWith(currentYearStr)) yearTotal += p.amount;
             });
 
             document.getElementById('pay-stat-today').textContent = formatIDR(todayTotal);
@@ -2510,6 +2828,7 @@ function getNextInvoiceSequence() {
             };
             customers.unshift(newCus);
             logAudit('CREATE', 'CUSTOMER', newCusId, `Menambah customer baru: ${newCus.customer_name}`);
+            saveStateToStorage();
             closeAddCustomerModal();
             renderCustomersTable();
             resetPosForm();
@@ -2535,6 +2854,7 @@ function getNextInvoiceSequence() {
             });
 
             logAudit('CREATE', 'PRODUCT', newId, `Menambah produk baru: ${name}`);
+            saveStateToStorage();
             renderProductsTable();
             resetPosForm();
             showNotification(`Produk ${name} berhasil ditambahkan!`);
